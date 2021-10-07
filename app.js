@@ -22,9 +22,14 @@ Vue.createApp({
       this.rotateY = 0;
       this.rotateZ = 0;
     },
-    copyAttrs(){
-      const attr = 'transform:' +'rotateX(' + this.rotateX + 'deg)' + 'rotateY(' + this.rotateY + 'deg)' + 'rotateZ(' + this.rotateZ + 'deg);' + 'perspective: ' + this.perspective + 'px' ;
-      console.log(attr)
+    copyAttrs() {
+      const attr = 'transform:' + 'rotateX(' + this.rotateX + 'deg)' + 'rotateY(' + this.rotateY + 'deg)' + 'rotateZ(' + this.rotateZ + 'deg);' + 'perspective: ' + this.perspective + 'px';
+      console.log(attr);
+      navigator.clipboard.writeText(attr).then(() => {
+        alert('the attribute successfully copied!');
+      }, (err) => {
+        console.error('Async: Could not copy text: ', err);
+      });
     }
 
 
